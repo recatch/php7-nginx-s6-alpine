@@ -1,4 +1,4 @@
-FROM php:7.1.0-fpm-alpine
+FROM php:7.1.1-fpm-alpine
 
 EXPOSE 80 443
 
@@ -14,7 +14,7 @@ ENTRYPOINT []
 CMD ["/init"]
 
 ENV XDEBUG_VERSION 2.5.0
-ENV PHPREDIS_VERSION 3.0.0
+ENV PHPREDIS_VERSION 3.1.0
 
 RUN docker-php-source extract \
     && apk add --no-cache --virtual .php-ext-build-deps \
@@ -42,7 +42,7 @@ RUN docker-php-source extract \
     && apk del .php-ext-build-deps \
     && docker-php-source delete
 
-ENV NGINX_VERSION 1.11.7
+ENV NGINX_VERSION 1.11.8
 
 RUN addgroup -S nginx \
     && adduser -D -S -h /home/nginx -s /sbin/nologin -G nginx nginx \
