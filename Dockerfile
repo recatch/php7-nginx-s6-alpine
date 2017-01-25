@@ -14,7 +14,7 @@ ENTRYPOINT []
 CMD ["/init"]
 
 ENV XDEBUG_VERSION 2.5.0
-ENV PHPREDIS_VERSION 3.1.0
+ENV PHPREDIS_VERSION 3.1.1RC2
 
 RUN docker-php-source extract \
     && apk add --no-cache --virtual .php-ext-build-deps \
