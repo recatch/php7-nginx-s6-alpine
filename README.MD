@@ -1,13 +1,13 @@
-# PHP - NGINX Image based on php:7.1.1-fpm-alpine linux and s6-overlay
+# PHP - NGINX Image based on php:7.1.8-fpm-alpine linux and s6-overlay
 [https://hub.docker.com/_/php/](https://hub.docker.com/_/php/)
 
  | Version
 --- | ---
 [Alpine Linux](https://hub.docker.com/_/alpine/) | 3.4
-[PHP](http://php.net/downloads.php) | 7.1.1
-[Xdebug](https://github.com/xdebug/xdebug/releases) | 2.5.0
-[Nginx](https://nginx.org/en/download.html) | 1.11.8
-[S6](https://github.com/just-containers/s6-overlay/releases) | 1.18.1.5
+[PHP](http://php.net/downloads.php) | 7.1.8
+[Xdebug](https://github.com/xdebug/xdebug/releases) | 2.5.5
+[Nginx](https://nginx.org/en/download.html) | 1.13.4
+[S6](https://github.com/just-containers/s6-overlay/releases) | 1.20.0.0
 
 # Available Configuration Parameters
 

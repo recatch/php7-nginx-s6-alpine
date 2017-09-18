@@ -1,20 +1,16 @@
-FROM php:7.1.1-fpm-alpine
+FROM php:7.1.9-fpm-alpine
 
 EXPOSE 80 443
 
 RUN apk --no-cache add bind-tools binutils bash curl ca-certificates git
 
 ENV APP_ENV prod
-
-ENV S6_OVERLAY_VERSION v1.18.1.5
+ENV S6_OVERLAY_VERSION v1.20.0.0
+ENV NGINX_VERSION 1.13.5
+ENV XDEBUG_VERSION 2.5.5
+ENV PHPREDIS_VERSION 3.1.3
 
 RUN curl -sSL https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz | tar xfz - -C /
-
-ENTRYPOINT []
-CMD ["/init"]
-
-ENV XDEBUG_VERSION 2.5.0
-ENV PHPREDIS_VERSION 3.1.1RC2
 
 RUN docker-php-source extract \
     && apk add --no-cache --virtual .php-ext-build-deps \
@@ -41,8 +37,6 @@ RUN docker-php-source extract \
     && docker-php-ext-enable redis \
     && apk del .php-ext-build-deps \
     && docker-php-source delete
-
-ENV NGINX_VERSION 1.11.8
 
 RUN addgroup -S nginx \
     && adduser -D -S -h /home/nginx -s /sbin/nologin -G nginx nginx \
@@ -106,3 +100,6 @@ ADD root /
 RUN chown -R nginx: /home/nginx
 
 WORKDIR /data
+
+ENTRYPOINT []
+CMD ["/init"]
