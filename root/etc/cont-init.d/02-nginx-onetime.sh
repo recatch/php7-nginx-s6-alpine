@@ -4,8 +4,11 @@ SYMFONY=${SYMFONY:-false}
 DEBUG=${DEBUG:-false}
 NGINX_TEMPLATE=/etc/nginx/host.d/php.tmpl
 if [ "$SYMFONY" == "true" ]; then
+    SYMFONY_VERSION=${SYMFONY_VERSION:-"3"}
     NGINX_TEMPLATE=/etc/nginx/host.d/symfony.tmpl
-    if [ "$DEBUG" == "true" ]; then
+    if [ "$SYMFONY_VERSION" == "4" ]; then
+        NGINX_TEMPLATE=/etc/nginx/host.d/symfony.4.tmpl
+    elif [ "$DEBUG" == "true" ]; then
         NGINX_TEMPLATE=/etc/nginx/host.d/symfony.dev.tmpl
     fi
 fi
