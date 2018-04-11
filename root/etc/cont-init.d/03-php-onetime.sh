@@ -42,5 +42,5 @@ fi
 
 ENABLE_PHP_ENV=${ENABLE_PHP_ENV:-false}
 if [ "${ENABLE_PHP_ENV}" == "true" ]; then
-    sed -i 's#clear_env = yes#clear_env = no#' /usr/local/etc/php/php-fpm.conf
+    sed -i 's#clear_env = yes#clear_env = no#' /usr/local/etc/php-fpm.conf
 fi
