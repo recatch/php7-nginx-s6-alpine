@@ -1,4 +1,4 @@
-FROM php:7-fpm-alpine
+FROM php:7.1.11-fpm-alpine
 
 EXPOSE 80 443
 
