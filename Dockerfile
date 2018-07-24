@@ -2,7 +2,7 @@ FROM php:7-fpm-alpine
 
 EXPOSE 80 443
 
-RUN apk --no-cache add bind-tools binutils bash curl ca-certificates git
+RUN apk --no-cache add bind-tools binutils bash curl ca-certificates git tzdata
 
 ENV APP_ENV prod
 ENV S6_OVERLAY_VERSION v1.21.4.0
