@@ -1,14 +1,14 @@
-FROM php:7-fpm-alpine
+FROM php:7.2-fpm-alpine
 
 EXPOSE 80 443
 
 RUN apk --no-cache add bind-tools binutils bash curl ca-certificates git tzdata
 
 ENV APP_ENV prod
-ENV S6_OVERLAY_VERSION v1.21.4.0
-ENV NGINX_VERSION 1.13.12
-ENV XDEBUG_VERSION 2.6.0
-ENV PHPREDIS_VERSION 4.0.0
+ENV S6_OVERLAY_VERSION v1.21.8.0
+ENV NGINX_VERSION 1.14.2
+ENV XDEBUG_VERSION 2.6.1
+ENV PHPREDIS_VERSION 4.2.0
 
 RUN curl -sSL https://github.com/just-containers/s6-overlay/releases/download/${S6_OVERLAY_VERSION}/s6-overlay-amd64.tar.gz | tar xfz - -C /
 
@@ -97,7 +97,8 @@ RUN curl -sSL https://getcomposer.org/installer | php -- --install-dir=/usr/loca
 
 ADD root /
 
-RUN chown -R nginx: /home/nginx
+RUN chown -R nginx: /home/nginx \
+    && update-ca-certificates
 
 WORKDIR /data
 
