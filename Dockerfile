@@ -22,6 +22,7 @@ RUN docker-php-source extract \
         gmp-dev \
         icu-dev \
         libxml2-dev \
+        libxslt-dev \
     && apk add --no-cache --virtual .php-ext-deps \
         freetype \
         libjpeg-turbo \
@@ -30,8 +31,9 @@ RUN docker-php-source extract \
         gmp \
         icu \
         libxml2 \
+        libxslt \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ --with-webp-dir=/usr/include/ --with-png-dir=/usr/include/ \
-    && docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)" bcmath exif gd gmp intl mysqli opcache pcntl pdo_mysql soap sockets xmlrpc zip \
+    && docker-php-ext-install -j"$(getconf _NPROCESSORS_ONLN)" bcmath exif gd gmp intl mysqli opcache pcntl pdo_mysql soap sockets xmlrpc xsl zip \
     && pecl install redis-${PHPREDIS_VERSION} \
     && pecl install xdebug-${XDEBUG_VERSION} \
     && docker-php-ext-enable redis \
